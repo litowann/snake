@@ -1,5 +1,6 @@
 from turtle import Screen
 from snake import Snake
+import time
 
 # Default game screen settings
 screen = Screen()
@@ -10,7 +11,6 @@ screen.tracer(0)
 
 # Snake implementation
 snake = Snake()
-snake.set_position()
 snake.move(screen)
 
 screen.exitonclick()
