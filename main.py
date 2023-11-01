@@ -1,20 +1,14 @@
-from turtle import Turtle, Screen
+from turtle import Screen
+from snake import Snake
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("snake")
+screen.tracer(0)
 
-first_snake_body = Turtle("square")
-second_snake_body = Turtle("square")
-third_snake_body = Turtle("square")
-
-first_snake_body.color("white")
-
-second_snake_body.color("white")
-second_snake_body.forward(20)
-
-third_snake_body.color("white")
-third_snake_body.forward(40)
+snake = Snake()
+snake.set_position()
+snake.move(screen)
 
 screen.exitonclick()
