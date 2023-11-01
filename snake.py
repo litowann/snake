@@ -1,8 +1,7 @@
 from turtle import Turtle
+from constants import *
 import time
 
-STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
-MOVE_DISTANCE = 20
 
 class Snake:
     __is_game_on__ = True
@@ -10,6 +9,7 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.set_position()
+        self.head = self.segments[0]
 
     def set_position(self):
         for position in STARTING_POSITIONS:
@@ -29,4 +29,20 @@ class Snake:
                 y = self.segments[segment_index - 1].ycor()
                 self.segments[segment_index].goto(x, y)
 
-            self.segments[0].forward(MOVE_DISTANCE)
+            self.head.forward(MOVE_DISTANCE)
+
+    def up(self):
+        if self.head.heading() != DOWN_DIRECTION:
+            self.head.setheading(UP_DIRECTION)
+
+    def down(self):
+        if self.head.heading() != UP_DIRECTION:
+            self.head.setheading(DOWN_DIRECTION)
+
+    def left(self):
+        if self.head.heading() != RIGHT_DIRECTION:
+            self.head.setheading(LEFT_DIRECTION)
+
+    def right(self):
+        if self.head.heading() != LEFT_DIRECTION:
+            self.head.setheading(RIGHT_DIRECTION)
