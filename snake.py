@@ -18,7 +18,12 @@ class Snake:
 
     def move(self, screen):
         while self.__is_game_on__:
-            for segment in self.__segments__:
-                segment.forward(20)
-                screen.update()
-                time.sleep(1)
+            screen.update()
+            time.sleep(0.1)
+
+            for segment_index in range(len(self.__segments__) - 1, 0, -1):
+                x = self.__segments__[segment_index - 1].xcor()
+                y = self.__segments__[segment_index - 1].ycor()
+                self.__segments__[segment_index].goto(x, y)
+
+            self.__segments__[0].forward(20)
