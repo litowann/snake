@@ -3,9 +3,7 @@ from constants import *
 import time
 
 
-class Snake:
-    __is_game_on__ = True
-
+class Snake():
     def __init__(self):
         self.segments = []
         self.set_position()
@@ -19,17 +17,13 @@ class Snake:
             snake_segment.goto(position)
             self.segments.append(snake_segment)
 
-    def move(self, screen):
-        while self.__is_game_on__:
-            screen.update()
-            time.sleep(0.1)
+    def move(self):
+        for segment_index in range(len(self.segments) - 1, 0, -1):
+            x = self.segments[segment_index - 1].xcor()
+            y = self.segments[segment_index - 1].ycor()
+            self.segments[segment_index].goto(x, y)
 
-            for segment_index in range(len(self.segments) - 1, 0, -1):
-                x = self.segments[segment_index - 1].xcor()
-                y = self.segments[segment_index - 1].ycor()
-                self.segments[segment_index].goto(x, y)
-
-            self.head.forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
     def up(self):
         if self.head.heading() != DOWN_DIRECTION:
