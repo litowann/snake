@@ -1,6 +1,5 @@
 from turtle import Turtle
 from constants import *
-import time
 
 
 class Snake:
@@ -47,3 +46,11 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT_DIRECTION:
             self.head.setheading(RIGHT_DIRECTION)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+
+        self.segments.clear()
+        self.set_position()
+        self.head = self.segments[0]
