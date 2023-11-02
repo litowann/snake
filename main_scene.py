@@ -9,7 +9,6 @@ class MainScene:
 
     def __init__(self):
         # Default game screen settings
-        super().__init__()
         self.screen = Screen()
         self.screen.setup(width=600, height=600)
         self.screen.bgcolor("black")
