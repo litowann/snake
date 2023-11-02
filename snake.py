@@ -3,7 +3,8 @@ from constants import *
 import time
 
 
-class Snake():
+class Snake:
+
     def __init__(self):
         self.segments = []
         self.set_position()
